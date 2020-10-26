@@ -1,7 +1,3 @@
-.color {
-    color: blue;
-    span {
-        color: red !important;
-        font-weight: 700 !important;
-    }
+.accent {
+    color: orange;
 }
