@@ -1,0 +1,38 @@
+$shadow: #0006;
+
+.block {
+    max-width: 600px;
+    .header {
+        box-shadow: 0 0 50px $shadow;
+        border-radius: 20px 20px 0 0;
+        background: #222;
+        text-align: center;
+        color: #eee;
+        // padding: 40px;
+        &__title {
+            font-family: Arial;
+            font-size: 40px;
+            margin: 0;
+            padding: 0;
+            padding: 20px;
+            &__span {
+                font-weight: 700;
+            }
+        }
+    }
+    .body {
+        box-shadow: 0 0 50px $shadow;
+        border-radius: 0 0 20px 20px;
+        &__image {
+            width: 100%;
+            border-radius: inherit;
+            margin-bottom: -4px;
+        }
+    }
+    .copy {
+        text-align: center;
+        font-weight: 700;
+        font-size: 24px;
+        font-family: Arial;
+    }
+}
