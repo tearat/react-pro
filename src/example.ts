@@ -16,12 +16,7 @@ const concat: Concat = (a: string, b: string) => `${a} ${b}`
 interface Task {
     howIDoIt: string,
     simeArray: Array<string|number>,
-    withData: Array<Taskdata>
-}
-
-interface Taskdata {
-    howIDoIt: string,
-    simeArray: Array<string|number>
+    withData?: Array<Task>
 }
 
 const myHometask: Task = {
