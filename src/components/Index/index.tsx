@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={s.index}>
       <div className={s.indexContent}>
-        <img className={s.indexContent__banner} src={banner} alt="banner" />
+        <img className={s.indexContentBanner} src={banner} alt="banner" />
         <h1 className={s.indexContentTitle}>
           <strong>Find</strong> all your <br /> favorite <strong>Pokemon</strong>
         </h1>
