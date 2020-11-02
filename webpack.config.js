@@ -4,6 +4,9 @@ const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
   resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './src/'),
+    },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
   mode: NODE_ENV ? NODE_ENV : 'development',
@@ -42,7 +45,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: ['file-loader'],
       },
     ],
