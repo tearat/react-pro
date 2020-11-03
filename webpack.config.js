@@ -19,7 +19,7 @@ module.exports = {
     rules: [
       {
         test: /\.[tj]sx?$/,
-        use: ['ts-loader'],
+        use: ['ts-loader', 'eslint-loader'],
         exclude: /node_modules/,
       },
       {
