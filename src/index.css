@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,700;1,400&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
   margin: 0;
   padding: 0;
+}
+
+body {
   max-height: 100vh;
   overflow-y: hidden;
   background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);

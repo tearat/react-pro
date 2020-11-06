@@ -1,23 +1,9 @@
 import React from 'react';
-// import cn from 'classnames';
 
-// import s from '~/App.module.scss';
-// import image from '~/assets/images/pokemon.png';
-
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Index from './components/Index';
+import HomePage from './pages/Home/index';
 
 const App = () => {
-  return (
-    <>
-      <Header />
-      <div className="wrapper">
-        <Index />
-      </div>
-      <Footer />
-    </>
-  );
+  return <HomePage />;
 };
 
 export default App;
