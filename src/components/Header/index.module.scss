@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .header {
   width: 100%;
   background: green;
@@ -25,13 +27,36 @@
       justify-content: space-between;
       align-items: center;
       li {
+        position: relative;
         display: inline-block;
         font-size: 25px;
         font-weight: 400;
         font-family: Karla;
-        padding-bottom: 16px;
-        &.selected {
-          border-bottom: 3px solid #212121;
+        a {
+          text-decoration: none;
+          color: $dark;
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: -8px;
+          height: 1px;
+          width: 1%;
+          background: $dark;
+          border: 1px solid $dark;
+          border-radius: 6px;
+          opacity: 0;
+          left: 50%;
+          transform: translate(-50%, 0);
+          transition: opacity, width ease-in-out 0.25s;
+        }
+        &:hover {
+          &:after {
+            width: 100%;
+            opacity: 1;
+          }
         }
       }
     }
