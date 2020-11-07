@@ -24,7 +24,8 @@ module.exports = {
     rules: [
       {
         test: /\.[tj]sx?$/,
-        use: ['ts-loader', 'eslint-loader'],
+        // use: ['ts-loader', 'eslint-loader'],
+        use: ['ts-loader'],
         exclude: /node_modules/,
       },
       {
@@ -50,12 +51,24 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
-        use: ['file-loader'],
-      },
-      {
         test: /\.svg$/,
         use: ['@svgr/webpack', 'url-loader'],
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        use: ['url-loader'],
       },
     ],
   },
@@ -68,6 +81,7 @@ module.exports = {
     port: 3000,
     // open: true,
     hot: true,
+    historyApiFallback: true,
   },
   devtool: 'source-map',
 };

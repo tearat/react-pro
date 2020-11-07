@@ -2,7 +2,8 @@
 // Please do not change this file!
 interface CssExports {
   content: string;
-  contentParallax: string;
+  contentSearch: string;
+  contentTitle: string;
   root: string;
 }
 export const cssExports: CssExports;

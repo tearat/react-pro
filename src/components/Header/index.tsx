@@ -1,6 +1,6 @@
 import React from 'react';
 
-import s from './index.module.scss';
+import s from './Header.module.scss';
 import { ReactComponent as PokemonLogo } from '~/assets/images/Logo.svg';
 
 interface IMenu {
@@ -10,8 +10,8 @@ interface IMenu {
 }
 
 const MENU: IMenu[] = [
-  { id: 1, title: 'Home', link: '#' },
-  { id: 2, title: 'Pokédex', link: '#' },
+  { id: 1, title: 'Home', link: '/' },
+  { id: 2, title: 'Pokédex', link: '/pokedex' },
   { id: 3, title: 'Legendaries', link: '#' },
   { id: 4, title: 'Documentation', link: '#' },
 ];

@@ -1,0 +1,20 @@
+.root {
+  h1 {
+    font-size: 72px;
+    font-weight: 400;
+    font-family: Karla;
+    margin-bottom: 64px;
+    padding-top: 128px;
+    max-width: 490px;
+    strong {
+      font-weight: 700;
+    }
+  }
+  h2 {
+    font-size: 32px;
+    font-family: Karla;
+    margin-bottom: 64px;
+    max-width: 490px;
+    font-weight: 400;
+  }
+}
