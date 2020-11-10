@@ -2,6 +2,8 @@ import React from 'react';
 import s from './Pokedex.module.scss';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import PokemonCard from '../../components/PokemonCard/index';
+import pokemons from '../../pokemons';
 
 const Poredex = () => {
   return (
@@ -16,6 +18,19 @@ const Poredex = () => {
         <div className={s.contentSearch}>
           <input type="text" placeholder="find a pokemon" />
         </div>
+      </div>
+
+      <div className={s.contentGrid}>
+        {pokemons.map((pokemon) => (
+          <PokemonCard
+            key={pokemon.id}
+            title={pokemon.name_clean}
+            attack={pokemon.stats.attack}
+            defense={pokemon.stats.defense}
+            img={pokemon.img}
+            types={pokemon.types}
+          />
+        ))}
       </div>
 
       <Footer />
