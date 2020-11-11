@@ -3,6 +3,7 @@ import { navigate } from 'hookrouter';
 import s from './NotFound.module.scss';
 import Image404 from '../../assets/images/404_r.png';
 import Button from '../../components/Button/index';
+import { LinkEnum } from '../../router';
 
 const NotFoundPage = () => {
   return (
@@ -17,7 +18,7 @@ const NotFoundPage = () => {
             has won this time.
           </div>
           <div className={s.contentButtonBox}>
-            <Button onClick={() => navigate('/')} color="yellow">
+            <Button onClick={() => navigate(LinkEnum.HOME)} color="yellow">
               Return
             </Button>
           </div>

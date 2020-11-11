@@ -35,7 +35,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ title, attack, defense, img,
           ))}
         </div>
       </div>
-      <div className={s.pictureWrap}>
+      <div className={cn(s.pictureWrap, s[types[0] as keyof typeof s])}>
         <img src={img} alt="Charmander" />
       </div>
     </div>
