@@ -13,26 +13,6 @@ interface IPokemonCardProps {
 }
 
 const PokemonCard: React.FC<IPokemonCardProps> = ({ title, attack, defense, img, types }) => {
-  const typeStyleResolver = (type: string) => ({
-    [s.fire]: type === 'fire',
-    [s.fighting]: type === 'fighting',
-    [s.dragon]: type === 'dragon',
-    [s.ice]: type === 'ice',
-    [s.water]: type === 'water',
-    [s.grass]: type === 'grass',
-    [s.bug]: type === 'bug',
-    [s.stile]: type === 'stile',
-    [s.dark]: type === 'dark',
-    [s.rock]: type === 'rock',
-    [s.normal]: type === 'normal',
-    [s.gosth]: type === 'gosth',
-    [s.poison]: type === 'poison',
-    [s.psychic]: type === 'psychic',
-    [s.fairy]: type === 'fairy',
-    [s.ghost]: type === 'ghost',
-    [s.ground]: type === 'ground',
-    [s.electric]: type === 'electric',
-  });
   return (
     <div className={s.root}>
       <div className={s.infoWrap}>
@@ -49,7 +29,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ title, attack, defense, img,
         </div>
         <div className={s.labelWrap}>
           {types.map((type: string) => (
-            <span className={cn(s.label, typeStyleResolver(type))}>{type}</span>
+            <span className={cn(s.label, s[type as keyof typeof s])}>{type}</span>
           ))}
         </div>
       </div>
