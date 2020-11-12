@@ -1,18 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './Pokedex.module.scss';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import PokemonCard from '../../components/PokemonCard/index';
-import pokemons from '../../pokemons';
+
+interface IData {
+  total: number;
+  pokemons: Array<IPokemon>;
+}
+
+interface IPokemon {
+  id: number;
+  // eslint-disable-next-line camelcase
+  name_clean: string;
+  stats: IStats;
+  img: string;
+  types: Array<string>;
+}
+
+interface IStats {
+  attack: number;
+  defense: number;
+}
+
+const usePokemons = () => {
+  const [data, setData] = useState<IData>({ total: 0, pokemons: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    const getPokemons = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch('http://zar.hosthot.ru/api/v1/pokemons');
+        const result = await response.json();
+        setData(result);
+      } catch (e) {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getPokemons();
+  }, []);
+
+  return {
+    data,
+    isLoading,
+    isError,
+  };
+};
 
 const Poredex = () => {
+  const { data, isLoading, isError } = usePokemons();
+
+  if (isLoading) {
+    return <div className={s.status}>Loading 🤔</div>;
+  }
+
+  if (isError) {
+    return <div className={s.status}>Error 🔥</div>;
+  }
+
   return (
     <div className={s.root}>
-      <Header />
-
       <div className={s.content}>
         <div className={s.contentTitle}>
-          800 <strong>pokemons</strong> for you to choose your favorite
+          {data.total} <strong>pokemons</strong> for you to choose your favorite
         </div>
 
         <div className={s.contentSearch}>
@@ -21,7 +73,7 @@ const Poredex = () => {
       </div>
 
       <div className={s.contentGrid}>
-        {pokemons.map((pokemon) => (
+        {data.pokemons.map((pokemon: IPokemon) => (
           <PokemonCard
             key={pokemon.id}
             title={pokemon.name_clean}
@@ -32,8 +84,6 @@ const Poredex = () => {
           />
         ))}
       </div>
-
-      <Footer />
     </div>
   );
 };

@@ -3,29 +3,43 @@ import HomePage from './pages/Home';
 import EmptyPage from './pages/Empty';
 import Poredex from './pages/Pokedex/index';
 
-export const GENERAL_MENU = [
+interface IGeneralMenu {
+  id: number;
+  title: string;
+  link: LinkEnum;
+  component: () => JSX.Element;
+}
+
+export enum LinkEnum {
+  HOME = '/',
+  POKEDEX = '/pokedex',
+  LEGENDARIES = '/legendaries',
+  DOCUMENTATION = '/documentation',
+}
+
+export const GENERAL_MENU: IGeneralMenu[] = [
   {
     id: 1,
     title: 'Home',
-    link: '/',
+    link: LinkEnum.HOME,
     component: () => <HomePage />,
   },
   {
     id: 2,
     title: 'Pokédex',
-    link: '/pokedex',
+    link: LinkEnum.POKEDEX,
     component: () => <Poredex />,
   },
   {
     id: 3,
     title: 'Legendaries',
-    link: '/legendaries',
+    link: LinkEnum.LEGENDARIES,
     component: () => <EmptyPage title="legendaries" />,
   },
   {
     id: 4,
     title: 'Documentation',
-    link: '/documentation',
+    link: LinkEnum.DOCUMENTATION,
     component: () => <EmptyPage title="documentation" />,
   },
 ];
