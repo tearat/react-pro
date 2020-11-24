@@ -1,38 +1,16 @@
 import { useEffect, useState } from 'react';
 import request from '../utils/request';
 
-interface IData {
-  total: number;
-  pokemons: Array<IPokemon>;
-}
-
-interface IPokemon {
-  id: number;
-  // eslint-disable-next-line camelcase
-  name_clean: string;
-  stats: IStats;
-  img: string;
-  types: Array<string>;
-}
-
-interface IStats {
-  attack: number;
-  defense: number;
-}
-
-const useData = (endpoint: string, query: object, deps: any[] = []) => {
-  const [data, setData] = useState<IData>({
-    total: 0,
-    pokemons: [],
-  });
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+const useData = <T>(endpoint: string, query: object, deps: any[] = []) => {
+  const [data, setData] = useState<T | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
-    const getData = async () => {
+    const getData = async (): Promise<void> => {
       setIsLoading(true);
       try {
-        const result = await request(endpoint, query);
+        const result = await request<T>(endpoint, query);
         setData(result);
       } catch (e) {
         setIsError(true);
@@ -51,4 +29,3 @@ const useData = (endpoint: string, query: object, deps: any[] = []) => {
 };
 
 export default useData;
-export type { IPokemon };

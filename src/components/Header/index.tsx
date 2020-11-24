@@ -13,8 +13,8 @@ const Header = () => {
       <div className={s.headerContent}>
         <PokemonLogo />
         <ul className={s.headerContentLinks}>
-          {GENERAL_MENU.map(({ id, title, link }) => (
-            <li key={id} className={cn({ [s.activeLink]: link === path })}>
+          {GENERAL_MENU.map(({ title, link }) => (
+            <li key={link} className={cn({ [s.activeLink]: link === path })}>
               <A href={link}>{title}</A>
             </li>
           ))}
