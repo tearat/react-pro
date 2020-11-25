@@ -8,7 +8,8 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --watch --hot",
     "pretty": "pretty-quick",
     "lint": "eslint ./src",
-    "lint:watch": "watch 'npm run lint'"
+    "lint:watch": "watch 'npm run lint'",
+    "test": "jest --watch"
   },
   "main": "index.js",
   "repository": "https://github.com/tearat/react-pro",
