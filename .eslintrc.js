@@ -14,6 +14,7 @@ module.exports = {
   plugins: ['prettier', 'react', '@typescript-eslint'],
   rules: {
     'no-shadow': 'off',
+    'no-param-reassign': 'off',
     // 'no-console': 0,
     'react/prop-types': 0,
     'import/no-unresolved': 0,

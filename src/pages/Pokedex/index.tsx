@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import s from './Pokedex.module.scss';
 import PokemonCard from '../../components/PokemonCard/index';
-import useData, { IPokemon } from '../../hook/getData';
+import useData from '../../hook/getData';
+import { PokemonsRequest, IPokemons } from '../../interface/pokemons';
+import useDebounce from '../../hook/useDebounce';
+
+interface IQuery {
+  name?: string;
+}
 
 const Poredex = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState<IQuery>({});
+  const debouncedValue = useDebounce(searchValue, 500);
 
-  const { data, isLoading, isError } = useData('getPokemons', query, [searchValue]);
+  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [debouncedValue]);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    setQuery((st) => ({
-      ...st,
+    setQuery((state: IQuery) => ({
+      ...state,
       name: event.target.value,
     }));
   };
+
+  useEffect(() => {}, [debouncedValue]);
 
   // if (isLoading) {
   //   return <div className={s.status}>Loading 🤔</div>;
@@ -29,7 +38,7 @@ const Poredex = () => {
     <div className={s.root}>
       <div className={s.content}>
         <div className={s.contentTitle}>
-          {!isLoading && data.total} <strong>pokemons</strong> for you to choose your favorite
+          {!isLoading && data && data.total} <strong>pokemons</strong> for you to choose your favorite
         </div>
 
         <div className={s.contentSearch}>
@@ -39,7 +48,8 @@ const Poredex = () => {
 
       <div className={s.contentGrid}>
         {!isLoading &&
-          data.pokemons.map((pokemon: IPokemon) => (
+          data &&
+          data.pokemons.map((pokemon: PokemonsRequest) => (
             <PokemonCard
               key={pokemon.id}
               title={pokemon.name_clean}
